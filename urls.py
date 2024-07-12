@@ -1,39 +1,20 @@
-"""
-URL configuration for student_project project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-# from django.contrib import admin
-# from django.urls import path, include
+# from django.urls import path
+# from .views import MyModelCreateView
 
 # urlpatterns = [
-#     path('admin/', admin.site.urls),
-#     path('api/', include('students.urls')),
+#     path('insert/', MyModelCreateView.as_view(), name='student-list-create'),
+#     path('get/', MyModelCreateView.as_view(), name='student-retrieve'),
+#     path('update/<int:pk>/', MyModelCreateView.as_view(), name='student-update'),
+#     path('delete/<int:pk>/', MyModelCreateView.as_view(), name='student-destroy'),
 # ]
 
-# student_project/urls.py
 
-# student_project/urls.py
+# students/urls.py
 
-# student_project/urls.py
-
-from django.contrib import admin
-from django.urls import path, include
-from students.views import student_management_view  # Import the view
+from django.urls import path
+from .views import StudentListCreateAPIView, StudentRetrieveUpdateDestroyAPIView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include('students.urls')),
-    path('', student_management_view, name='student-management'),  # Add this line
+    path('students/', StudentListCreateAPIView.as_view(), name='student-list-create'),
+    path('students/<int:pk>/', StudentRetrieveUpdateDestroyAPIView.as_view(), name='student-retrieve-update-destroy'),
 ]
